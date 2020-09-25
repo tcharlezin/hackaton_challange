@@ -7,7 +7,7 @@
         </div>
         <div class="candidate-box-content">
             <h2>Matias C.</h2>
-            <h3>Software Engineer</h3>
+            <h3>Developer</h3>
         </div>
     </div>
 </div>
@@ -21,7 +21,7 @@
         </div>
         <div class="candidate-box-content">
             <h2>Maru A.</h2>
-            <h3>Software Engineer</h3>
+            <h3>Developer</h3>
         </div>
     </div>
 </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="candidate-box-content">
             <h2>Lucas S.</h2>
-            <h3>Software Engineer</h3>
+            <h3>Developer</h3>
         </div>
     </div>
 </div>
@@ -49,7 +49,7 @@
         </div>
         <div class="candidate-box-content">
             <h2>Thiago D.</h2>
-            <h3>Software Engineer</h3>
+            <h3>Developer</h3>
         </div>
     </div>
 </div>
@@ -63,7 +63,7 @@
         </div>
         <div class="candidate-box-content">
             <h2>Tcharles S.</h2>
-            <h3>Software Engineer</h3>
+            <h3>Developer</h3>
         </div>
     </div>
 </div>
