@@ -1,0 +1,161 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+
+class CidadesParaSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Abaetetuba', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Abel Figueiredo', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Acará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Afuá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Água Azul do Norte', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Alenquer', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Almeirim', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Altamira', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Anajás', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Ananindeua', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Anapu', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Augusto Corrêa', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Aurora do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Aveiro', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Bagre', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Baião', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Bannach', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Barcarena', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Belém', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Belterra', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Benevides', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Bom Jesus do Tocantins', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Bonito', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Bragança', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Brasil Novo', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Brejo Grande do Araguaia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Breu Branco', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Breves', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Bujaru', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Cachoeira do Arari', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Cachoeira do Piriá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Cametá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Canaã dos Carajás', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Capanema', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Capitão Poço', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Castanhal', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Chaves', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Colares', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Conceição do Araguaia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Concórdia do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Cumaru do Norte', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Curionópolis', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Curralinho', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Curuá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Curuçá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Dom Eliseu', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Eldorado dos Carajás', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Faro', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Floresta do Araguaia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Garrafão do Norte', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Goianésia do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Gurupá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Igarapé-Açu', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Igarapé-Miri', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Inhangapi', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Ipixuna do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Irituia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Itaituba', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Itupiranga', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Jacareacanga', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Jacundá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Juruti', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Limoeiro do Ajuru', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Mãe do Rio', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Magalhães Barata', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Marabá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Maracanã', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Marapanim', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Marituba', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Medicilândia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Melgaço', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Mocajuba', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Moju', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Monte Alegre', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Muaná', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Nova Esperança do Piriá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Nova Ipixuna', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Nova Timboteua', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Novo Progresso', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Novo Repartimento', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Óbidos', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Oeiras do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Oriximiná', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Ourém', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Ourilândia do Norte', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Pacajá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Palestina do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Paragominas', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Parauapebas', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Pau d`Arco', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Peixe-Boi', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Piçarra', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Placas', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Ponta de Pedras', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Portel', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Porto de Moz', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Prainha', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Primavera', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Quatipuru', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Redenção', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Rio Maria', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Rondon do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Rurópolis', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Salinópolis', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Salvaterra', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Santa Bárbara do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Santa Cruz do Arari', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Santa Isabel do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Santa Luzia do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Santa Maria das Barreiras', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Santa Maria do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Santana do Araguaia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Santarém', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Santarém Novo', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Santo Antônio do Tauá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São Caetano de Odivelas', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São Domingos do Araguaia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São Domingos do Capim', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São Félix do Xingu', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São Francisco do Pará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São Geraldo do Araguaia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São João da Ponta', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São João de Pirabas', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São João do Araguaia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São Miguel do Guamá', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'São Sebastião da Boa Vista', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Sapucaia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Senador José Porfírio', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Soure', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Tailândia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Terra Alta', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Terra Santa', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Tomé-Açu', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Tracuateua', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Trairão', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Tucumã', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Tucuruí', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Ulianópolis', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Uruará', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Vigia', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Viseu', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Vitória do Xingu', 'estado_id' => 14]);
+        \App\Models\Localizacao\Cidade::create(['descricao' => 'Xinguara', 'estado_id' => 14]);
+
+        $this->command->info('Cidades do Pará importadas com sucesso!');
+    }
+}
