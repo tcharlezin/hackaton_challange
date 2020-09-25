@@ -2,9 +2,7 @@
     <h2>Create a new account</h2>
     <br/>
     <div class="center">
-
         <form role="form" method="POST" action="{{ route('register') }}">
-
             {{ csrf_field() }}
 
             <div id="registerError">
@@ -103,23 +101,19 @@
 </div>
 
 <div id="divRecuperarSenha" style="display: none">
-
     <form role="form" method="POST" action="{{ route('password.email') }}">
-
         {{ csrf_field() }}
 
-        <h2>Recuperação de senha</h2>
+        <h2>Recover Password</h2>
         <div class="">
             <div class="checkbox checkbox-info text-justify">
                 <label>
-                    Preencha abaixo o e-mail cadastrado na plataforma.
+                    Enter with the e-mail
                 </label>
             </div>
-
             <input type="text" name="email" class="form-control text-right" placeholder="E-mail"><br/>
-
             <div style="position: relative; display: block; margin-top: 20px; margin-bottom: 10px;" class="center">
-                <button type="submit" class="btn btn-secondary">Clique para recuperar</button>
+                <button type="submit" class="btn btn-secondary">Submit</button>
             </div>
         </div>
     </form>

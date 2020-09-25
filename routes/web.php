@@ -45,26 +45,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], "as" => "admin."], 
     });
 });
 
-/*** Métodos de pesquisa para combobox com Ajax */
-Route::group(['middleware' => ['auth', 'pesquisa-dados']], function ()
-{
-    Route::post('cidades', ['as' => 'pesquisa-cidade', 'uses' => 'Pesquisa\PesquisaController@findCidades']);
-    Route::post('valida-username', ['as' => 'valida-username', 'uses' => 'Pesquisa\PesquisaController@validaUsername']);
-});
-
 Route::group(['middleware' => ['auth']], function ()
 {
-    Route::group(['prefix' => 'perfil', 'namespace' => 'Perfil', 'middleware' => ['auth'], "as" => "perfil."], function ()
-    {
-        Route::get('geral', 'DadosPessoaisController@index')->name('geral');
-        Route::post('geral', 'DadosPessoaisController@store')->name('geral.store');
-
-        Route::get('foto', 'FotosController@index')->name('foto');
-        Route::post('foto', 'FotosController@store')->name('foto.store');
-    });
-
     Route::get('/home', 'HomeController@index')->name('home');
 });
-
-Route::get('/perfil/{username}', ['as' => 'perfil.usuario', 'uses' => 'Perfil\PerfilController@localizar']);
 
