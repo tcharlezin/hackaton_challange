@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Component;
+namespace App\Http\Controllers\Admin\Component;
 
 use App\Components\Uploads\UploadFileTmp;
 use App\Dominio\Uploads\UploadImageTmp;

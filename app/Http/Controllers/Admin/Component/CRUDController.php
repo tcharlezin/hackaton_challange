@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Component;
+namespace App\Http\Controllers\Admin\Component;
 
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\VarDumper\VarDumper;
 use Yajra\DataTables\DataTables;
 
 abstract class CRUDController extends BaseController

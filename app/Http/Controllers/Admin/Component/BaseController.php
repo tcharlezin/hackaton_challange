@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Component;
+namespace App\Http\Controllers\Admin\Component;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BaseRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
-use Symfony\Component\VarDumper\VarDumper;
 
 abstract class BaseController extends Controller
 {

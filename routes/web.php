@@ -23,21 +23,13 @@ Route::group(['prefix' => 'shop', "as" => "shop.", 'namespace' => 'Shop' ], func
     Route::get('/product', 'ProductController@index')->name("product");
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth'], "as" => "admin."], function ()
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin',  'middleware' => ['auth'], "as" => "admin."], function ()
 {
     Route::group(['prefix' => 'catalog', 'namespace' => 'Catalog', "as" => "catalog."], function ()
     {
         Route::get('dashboard', 'DashboardController@index')->name("dashboard");
         Route::resource('category', 'CategoryController');
         Route::resource('product', 'ProductController');
-    });
-
-    Route::group(['prefix' => 'sales', 'namespace' => 'Sales', "as" => "sales."], function ()
-    {
-        Route::get('new', 'SalesOrderController@new')->name("new");
-        Route::post('new', 'SalesOrderController@store')->name("new.store");
-
-        Route::get('lista', 'SalesOrderController@lista')->name("lista");
     });
 
     /*** Manipulação de arquivos de imagens ***/

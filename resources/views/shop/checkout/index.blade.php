@@ -175,14 +175,8 @@
                     </div>
                     <a href="#" class="primary-btn order-submit">Place order</a>
                 </div>
-                <!-- /Order Details -->
             </div>
-            <!-- /row -->
         </div>
-        <!-- /container -->
     </div>
-    <!-- /SECTION -->
-
-    @include("shop.components.newsletter")
 
 @endsection
