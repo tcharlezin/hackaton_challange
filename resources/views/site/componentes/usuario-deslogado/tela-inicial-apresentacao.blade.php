@@ -1,5 +1,5 @@
 <div id="divRegistro">
-    <h2>Sign up</h2>
+    <h2>Create a new account</h2>
     <br/>
     <div class="center">
 
@@ -57,7 +57,7 @@
 </div>
 
 <div id="divLogin" style="display: none">
-    <h2>Acessando a plataforma</h2>
+    <h2>Acessing the platform</h2>
     <div class="">
 
         <form role="form" method="POST" action="{{ route('login') }}">
@@ -66,7 +66,7 @@
 
             <div class="checkbox checkbox-info text-justify">
                 <label>
-                    Preencha seus dados de acesso
+                    Enter with your credentials
                 </label>
             </div>
 
@@ -84,19 +84,19 @@
 
             <input type="text" name="email" class="form-control text-right" placeholder="E-mail"><br/>
 
-            <input type="password" name="password" class="form-control text-right" placeholder="Senha"><br/>
+            <input type="password" name="password" class="form-control text-right" placeholder="Password"><br/>
 
             <div class="row">
                 <div class="col-sm-6 text-left">
-                    <a href="#" onclick="exibirRecuperarSenha();">Esqueceu sua senha?</a>
+                    <a href="#" onclick="exibirRecuperarSenha();">Forget password?</a>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="#" onclick="ExibeRegistar();">Cadastre-se</a>
+                    <a href="#" onclick="ExibeRegistar();">Register</a>
                 </div>
             </div>
 
             <div style="position: relative; display: block; margin-top: 20px; margin-bottom: 10px;" class="center">
-                <button type="submit" class="btn btn-secondary">Entrar</button>
+                <button type="submit" class="btn btn-secondary">Login</button>
             </div>
 
         </form>

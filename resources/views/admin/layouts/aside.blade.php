@@ -30,8 +30,7 @@
                 <div class="tab-content">
 
                     @php
-                        $messages = \App\Facade\Admin::getMessages();
-                        $hasMessages = $messages->count() > 0;
+                        $hasMessages = false;
                     @endphp
 
                     <!--First tab (Contact list)-->

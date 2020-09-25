@@ -16,33 +16,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], "as" => "admin."], 
         Route::resource('product', 'ProductController');
     });
 
-    Route::group(['prefix' => 'stock', 'namespace' => 'Stock', "as" => "stock."], function ()
-    {
-        Route::resource("dashboard", 'DashboardController@index');
-        Route::resource("material-type",'MaterialTypeController');
-        Route::resource("provider",'ProviderController');
-        Route::resource("material",'MaterialController');
-
-        Route::resource("production",'ProductionController');
-        Route::delete('production/item/{id}' , ['as' => 'production.item.destroy', 'uses' => 'ProductionController@destroyItem']);
-    });
-
     Route::group(['prefix' => 'sales', 'namespace' => 'Sales', "as" => "sales."], function ()
     {
         Route::get('new', 'SalesOrderController@new')->name("new");
         Route::post('new', 'SalesOrderController@store')->name("new.store");
 
         Route::get('lista', 'SalesOrderController@lista')->name("lista");
-
-        Route::get('fabricar/{id}', 'SalesOrderController@fabricar')->name("fabricar");
     });
-
-    Route::get('tempo-real', 'TempoRealController@index')->name("tempo-real");
-    Route::get('tempo-real/{id}', 'TempoRealController@history')->name("tempo-real.history");
-
-    Route::get('lancamento', 'LancamentoController@index')->name("lancamento");
-    Route::post('lancamento', 'LancamentoController@store')->name("lancamento.store");
-
 
     /*** Manipulação de arquivos de imagens ***/
     Route::group(['prefix' => 'fotos', 'as' => 'fotos.'], function ()
