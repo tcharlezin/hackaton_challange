@@ -7,6 +7,29 @@ Route::get('/', function ()
     return view('site.home');
 });
 
+Route::group(['prefix' => 'shop', "as" => "shop."], function ()
+{
+    Route::get('/home', function()
+    {
+        return view("shop.home.index");
+    })->name("index");
+
+    Route::get('/checkout', function()
+    {
+        return view("shop.checkout.index");
+    })->name("checkout");
+
+    Route::get('/product', function()
+    {
+        return view("shop.product.index");
+    })->name("product");
+
+    Route::get('/search', function()
+    {
+        return view("shop.search.index");
+    })->name("search");
+});
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], "as" => "admin."], function ()
 {
     Route::group(['prefix' => 'catalog', 'namespace' => 'Catalog', "as" => "catalog."], function ()
