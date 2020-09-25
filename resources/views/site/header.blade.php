@@ -45,18 +45,16 @@
                                 <a href="#">Home</a>
                             </li>
                             <li class="">
-                                <a href="#">Shop</a>
+                                <a href="{{route('shop.index')}}">Shop</a>
                             </li>
                         @else
                             <li class="active">
                                 <a href="#">Home</a>
                             </li>
                             <li class="">
-                                <a href="#">Shop</a>
+                                <a href="{{route('shop.index')}}">Shop</a>
                             </li>
                         @endif
-
-
                     </ul>
                     <div class="header-search hidden-sm">
                         <form method="get" action="?">
