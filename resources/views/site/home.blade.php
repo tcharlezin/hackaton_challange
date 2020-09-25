@@ -10,6 +10,20 @@
         </div>
     </div>
 
+    <div class="container">
+
+        <div class="block background-secondary fullwidth candidate-title">
+            @include('site.componentes.anuncio-candidatos')
+        </div>
+
+        <div class="row mt-60">
+            <div class="candidate-boxes">
+                @include("site.componentes.candidatos-promovidos")
+            </div>
+        </div>
+
+    </div>
+
 @endsection
 
 @section("footer")

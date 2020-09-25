@@ -2,11 +2,11 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="resume.html">
-                <img src="{{ asset("site/img/avatar-tcharles.jpg") }}" alt="Peter Ruck">
+                <img src="{{ asset("site/img/team/matias.jpeg") }}" alt="Peter Ruck">
             </a>
         </div>
         <div class="candidate-box-content">
-            <h2>Tcharles Silva</h2>
+            <h2>Matias C.</h2>
             <h3>Software Engineer</h3>
         </div>
     </div>
@@ -16,11 +16,11 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="resume.html">
-                <img src="{{ asset("site/img/avatar-tcharles.jpg") }}" alt="Peter Ruck">
+                <img src="{{ asset("site/img/team/maru.png") }}" alt="Peter Ruck">
             </a>
         </div>
         <div class="candidate-box-content">
-            <h2>Tcharles Silva</h2>
+            <h2>Maru A.</h2>
             <h3>Software Engineer</h3>
         </div>
     </div>
@@ -30,11 +30,11 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="resume.html">
-                <img src="{{ asset("site/img/avatar-tcharles.jpg") }}" alt="Peter Ruck">
+                <img src="{{ asset("site/img/team/lucas.jpeg") }}" alt="Peter Ruck">
             </a>
         </div>
         <div class="candidate-box-content">
-            <h2>Tcharles Silva</h2>
+            <h2>Lucas S.</h2>
             <h3>Software Engineer</h3>
         </div>
     </div>
@@ -44,11 +44,11 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="resume.html">
-                <img src="{{ asset("site/img/avatar-tcharles.jpg") }}" alt="Peter Ruck">
+                <img src="{{ asset("site/img/team/thiago.jpeg") }}" alt="Peter Ruck">
             </a>
         </div>
         <div class="candidate-box-content">
-            <h2>Tcharles Silva</h2>
+            <h2>Thiago D.</h2>
             <h3>Software Engineer</h3>
         </div>
     </div>
@@ -58,24 +58,11 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="resume.html">
-                <img src="{{ asset("site/img/avatar-tcharles.jpg") }}" alt="Peter Ruck">
+                <img src="{{ asset("site/img/team/tcharles.png") }}" alt="Peter Ruck">
             </a>
         </div>
         <div class="candidate-box-content">
-            <h2>Tcharles Silva</h2>
-            <h3>Software Engineer</h3>
-        </div>
-    </div>
-</div>
-<div class="col-sm-3 col-md-2">
-    <div class="candidate-box">
-        <div class="candidate-box-image">
-            <a href="resume.html">
-                <img src="{{ asset("site/img/avatar-tcharles.jpg") }}" alt="Peter Ruck">
-            </a>
-        </div>
-        <div class="candidate-box-content">
-            <h2>Tcharles Silva</h2>
+            <h2>Tcharles S.</h2>
             <h3>Software Engineer</h3>
         </div>
     </div>
