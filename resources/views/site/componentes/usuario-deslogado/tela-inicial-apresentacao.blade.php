@@ -19,22 +19,22 @@
                 @endif
             </div>
 
-            <input type="text" name="name" class="form-control text-right" placeholder="Nome completo" required><br/>
+            <input type="text" name="name" class="form-control text-right" placeholder="Fullname" required><br/>
             <input type="text" name="email" class="form-control text-right" placeholder="E-mail" required><br/>
-            <input type="password" name="password" class="form-control text-right" placeholder="Senha" required><br/>
+            <input type="password" name="password" class="form-control text-right" placeholder="Password" required><br/>
             <input type="password" name="password_confirmation" class="form-control text-right"
-                   placeholder="Confirme a senha" required>
+                   placeholder="Confirm Password" required>
 
             <div class="row">
                 <div class="form-group">
                     <div class="radio">
                         <div class="col-md-6">
                             <input id="gender_f" class="magic-radio" type="radio" name="sexo" value="f">
-                            <label for="gender_f">Sou mulher</label>
+                            <label for="gender_f">Female</label>
                         </div>
                         <div class="col-md-6">
                             <input id="gender_m" class="magic-radio" type="radio" name="sexo" value="m">
-                            <label for="gender_m">Sou homem</label>
+                            <label for="gender_m">Male</label>
                         </div>
                     </div>
                 </div>
@@ -43,12 +43,11 @@
             <input id="confirm" class="magic-checkbox" type="hidden" name="confirm" value="true">
 
             <div style="position: relative; display: block; margin-top: 20px; margin-bottom: 10px;">
-                <button type="submit" class="btn btn-secondary">Começar agora!</button>
+                <button type="submit" class="btn btn-secondary">Start it!</button>
             </div>
             <div class="checkbox checkbox-info">
                 <label>
-                    Ao se cadastrar, você estará concordando com os <a href="#">termos e condições</a> para uso da
-                    ferramenta.
+                    We dont will send SPAM to you. I guess.
                 </label>
             </div>
 
