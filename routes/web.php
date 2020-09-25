@@ -10,27 +10,15 @@ Route::group(["as" => "site."], function ()
     })->name("index");
 });
 
-Route::group(['prefix' => 'shop', "as" => "shop."], function ()
+Route::group(['prefix' => 'shop', "as" => "shop.", 'namespace' => 'Shop' ], function ()
 {
-    Route::get('/home', function()
-    {
-        return view("shop.home.index");
-    })->name("index");
+    Route::get('/home', 'HomeController@index')->name("index");
 
-    Route::get('/checkout', function()
-    {
-        return view("shop.checkout.index");
-    })->name("checkout");
+    Route::get('/search', 'SearchController@index')->name("search");
 
-    Route::get('/product', function()
-    {
-        return view("shop.product.index");
-    })->name("product");
+    Route::get('/checkout', 'CheckoutController@index')->name("checkout");
 
-    Route::get('/search', function()
-    {
-        return view("shop.search.index");
-    })->name("search");
+    Route::get('/product', 'ProductController@index')->name("product");
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], "as" => "admin."], function ()
@@ -64,21 +52,7 @@ Route::group(['middleware' => ['auth', 'pesquisa-dados']], function ()
     Route::post('valida-username', ['as' => 'valida-username', 'uses' => 'Pesquisa\PesquisaController@validaUsername']);
 });
 
-
-/** Métodos para que usuário preencha o perfil */
-Route::group(['prefix' => 'cadastro', 'namespace' => 'Cadastro', 'middleware' => ['auth'], "as" => "cadastro."], function ()
-{
-    Route::get('/dados-pessoais', 'DadosPessoaisController@create')->name("dados-pessoais.create");
-    Route::post('/dados-pessoais', 'DadosPessoaisController@store')->name("dados-pessoais.store");
-
-    Route::get('/fotos', 'FotosController@create')->name("foto.create");
-    Route::post('/fotos', 'FotosController@store')->name("foto.store");
-
-    Route::get('/configuracoes', 'ConfiguracoesController@create')->name("configuracao.create");
-    Route::post('/configuracoes', 'ConfiguracoesController@store')->name("configuracao.store");
-});
-
-Route::group(['middleware' => ['auth', 'perfil-completo']], function ()
+Route::group(['middleware' => ['auth']], function ()
 {
     Route::group(['prefix' => 'perfil', 'namespace' => 'Perfil', 'middleware' => ['auth'], "as" => "perfil."], function ()
     {
