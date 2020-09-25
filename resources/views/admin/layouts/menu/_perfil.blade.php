@@ -11,7 +11,7 @@
             </span>
 
             @if(Auth::check())
-                <p class="mnp-name">&#64;{{ Auth::user()->username }}</p>
+                <p class="mnp-name">&#64;{{ Auth::user()->name }}</p>
                 <span class="mnp-desc">{{ Auth::user()->perfil->name }}</span>
             @endif
         </a>

@@ -1,13 +1,9 @@
 @if(env("ADMIN_LAYOUT_DISPLAY_ASIDE_BAR"))
-<!--ASIDE-->
-<!--===================================================-->
+
 <aside id="aside-container">
     <div id="aside">
         <div class="nano">
             <div class="nano-content">
-
-                <!--Nav tabs-->
-                <!--================================-->
                 <ul class="nav nav-tabs nav-justified">
                     <li class="active">
                         <a href="#tab-mensagens" data-toggle="tab">
@@ -20,13 +16,7 @@
                         </a>
                     </li>
                 </ul>
-                <!--================================-->
-                <!--End nav tabs-->
 
-
-
-                <!-- Tabs Content -->
-                <!--================================-->
                 <div class="tab-content">
 
                     @php

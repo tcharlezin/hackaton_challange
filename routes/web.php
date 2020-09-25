@@ -16,6 +16,8 @@ Route::group(['prefix' => 'shop', "as" => "shop.", 'namespace' => 'Shop' ], func
 
     Route::get('/search', 'SearchController@index')->name("search");
 
+    Route::get('/category', 'CategoryController@index')->name("category");
+
     Route::get('/checkout', 'CheckoutController@index')->name("checkout");
 
     Route::get('/product', 'ProductController@index')->name("product");

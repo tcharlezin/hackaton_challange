@@ -22,16 +22,14 @@
 </head>
 
 <body>
-    <div id="container" class="effect aside-float aside-bright {{ Auth::user()->IsPerfilCompleto() ? "mainnav-lg" : ""  }}">
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
         @include('admin.layouts.header')
 
         <div class="boxed">
             @include('admin.layouts.content')
 
-            @if(Auth::user()->IsPerfilCompleto())
-                @include('admin.layouts.aside')
-                @include('admin.layouts.sidebar')
-            @endif
+            @include('admin.layouts.aside')
+            @include('admin.layouts.sidebar')
         </div>
 
         @include('admin.layouts.footer')
