@@ -26,20 +26,6 @@ class CreateUsersTable extends Migration
             $table->char("sexo")->nullable();
             $table->string("avatar")->nullable();
 
-
-            /*** Informações sobre o preenchimento do perfil **/
-            $table->boolean("is_completo")->default(false);
-
-            $table->boolean("preencheu_areas")->default(false);
-            $table->boolean("preencheu_avaliacao")->default(false);
-            $table->boolean("preencheu_configuracao")->default(false);
-            $table->boolean("preencheu_dados_pessoais")->default(false);
-            $table->boolean("preencheu_experiencias")->default(false);
-            $table->boolean("preencheu_formacao")->default(false);
-            $table->boolean("preencheu_foto")->default(false);
-            $table->boolean("preencheu_habilidades")->default(false);
-            $table->boolean("preencheu_redes_sociais")->default(false);
-
             $table->rememberToken();
             $table->timestamps();
         });
