@@ -2,9 +2,12 @@
 
 Auth::routes();
 
-Route::get('/', function ()
+Route::group(["as" => "site."], function ()
 {
-    return view('site.home');
+    Route::get('/', function ()
+    {
+        return view('site.home');
+    })->name("index");
 });
 
 Route::group(['prefix' => 'shop', "as" => "shop."], function ()
