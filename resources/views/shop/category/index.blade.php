@@ -2,7 +2,7 @@
 
 @section("content")
 
-@include("shop.search.breadcrumb")
+@include("shop.category.breadcrumb")
 
 <div class="section">
     <div class="container">

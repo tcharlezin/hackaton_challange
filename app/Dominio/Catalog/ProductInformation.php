@@ -16,16 +16,20 @@ class ProductInformation
     public function get()
     {
         $data = $this->generateSkusInformation();
+
         $data["categories"] = $this->getCategories();
         $data["name"] = $this->getName();
         $data["images"] = $this->getImages();
 
-        foreach($data["attribute"] as $keyName => $attribute)
+        if(isset($data["attribute"]))
         {
-            $data[$keyName] = $attribute;
-        }
+            foreach($data["attribute"] as $keyName => $attribute)
+            {
+                $data[$keyName] = $attribute;
+            }
 
-        unset($data["attribute"]);
+            unset($data["attribute"]);
+        }
 
         return $data;
     }
@@ -58,9 +62,25 @@ class ProductInformation
 
         $resultData = [];
 
-        $indexData["seller"] = array_unique($indexData["seller"]);
-        $indexData["sku"] = array_unique($indexData["sku"]);
-        $indexData["price"] = array_unique($indexData["price"]);
+        if(isset($indexData["seller"]))
+        {
+            $indexData["seller"] = array_unique($indexData["seller"]);
+        }
+
+        if(isset($indexData["sku"]))
+        {
+            $indexData["sku"] = array_unique($indexData["sku"]);
+        }
+
+        if(isset($indexData["price"]))
+        {
+            $indexData["price"] = array_unique($indexData["price"]);
+        }
+
+        if(!isset($indexData["attribute"]))
+        {
+            return $indexData;
+        }
 
         $newAttributes = [];
         foreach($indexData["attribute"] as $attributeName => $information)

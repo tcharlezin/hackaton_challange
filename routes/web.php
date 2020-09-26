@@ -4,14 +4,14 @@ Auth::routes();
 
 Route::get("/teste", function ()
 {
-    $products = \App\Models\Catalog\Product::all()->random(10);
+    $products = \App\Models\Catalog\Product::all();
 
     $studentsInfo = [];
 
     foreach($products as $product)
     {
         // $data = (new \App\Dominio\Catalog\ProductInformation($product->id))->get();
-        $data = (new \App\Dominio\Catalog\ProductInformation(5))->get();
+        $data = (new \App\Dominio\Catalog\ProductInformation(10))->get();
         \Symfony\Component\VarDumper\VarDumper::dump($data);
         die();
     }
@@ -34,11 +34,11 @@ Route::group(['prefix' => 'shop', "as" => "shop.", 'namespace' => 'Shop' ], func
 
     Route::get('/search', 'SearchController@index')->name("search");
 
-    Route::get('/category', 'CategoryController@index')->name("category");
+    Route::get('/category/{name}', 'CategoryController@index')->name("category.index");
 
     Route::get('/checkout', 'CheckoutController@index')->name("checkout");
 
-    Route::get('/product', 'ProductController@index')->name("product");
+    Route::get('/product/{name}', 'ProductController@index')->name("product.index");
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',  'middleware' => ['auth'], "as" => "admin."], function ()

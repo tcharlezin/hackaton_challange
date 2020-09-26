@@ -20,5 +20,9 @@ class FacadeServiceProvider extends ServiceProvider
         App::bind('site',function() {
             return new App\Dominio\Facade\SiteFacade();
         });
+
+        App::bind('shop',function() {
+            return new App\Dominio\Facade\ShopFacade();
+        });
     }
 }

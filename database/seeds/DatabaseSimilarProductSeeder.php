@@ -64,6 +64,10 @@ class DatabaseSimilarProductSeeder extends Seeder
                         ]);
                         $categoryCollection->push($category);
                     }
+                    else
+                    {
+                        $categoryCollection->push($category);
+                    }
                 }
 
                 $product = Product::where(["code" => $sku['PRODUCT_ID']])->first();
