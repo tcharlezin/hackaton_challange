@@ -8,16 +8,16 @@
     <div class="container">
         <div class="row">
 
-            @include('shop.search.aside')
+            @include('shop.category.aside')
 
             <div id="store" class="col-md-9">
-                @include('shop.search.top-filters')
+                @include('shop.category.top-filters')
 
                 <div class="row">
-                    @include('shop.search.products')
+                    @include('shop.category.products')
                 </div>
 
-                @include('shop.search.bottom-paginate')
+                @include('shop.category.bottom-paginate')
             </div>
         </div>
     </div>

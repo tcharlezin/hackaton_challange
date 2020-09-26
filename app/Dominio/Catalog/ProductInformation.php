@@ -18,6 +18,7 @@ class ProductInformation
         $data = $this->generateSkusInformation();
 
         $data["categories"] = $this->getCategories();
+        $data["brands"] = $this->getBrands();
         $data["name"] = $this->getName();
         $data["images"] = $this->getImages();
 
@@ -149,6 +150,25 @@ class ProductInformation
         foreach($rows as $row)
         {
             $response[] = $row->url;
+        }
+
+        return array_unique($response);
+    }
+
+    private function getBrands()
+    {
+        $query = sprintf("
+            SELECT bra.name
+              FROM brand_product as brapro
+        INNER JOIN brands as bra
+                ON bra.id = brapro.brand_id
+             WHERE brapro.product_id = %s;", $this->productId);
+
+        $rows = \DB::select($query);
+
+        foreach($rows as $row)
+        {
+            $response[] = $row->name;
         }
 
         return array_unique($response);

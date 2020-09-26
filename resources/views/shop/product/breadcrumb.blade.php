@@ -1,19 +1,14 @@
 <div id="breadcrumb" class="section">
-    <!-- container -->
     <div class="container">
-        <!-- row -->
         <div class="row">
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">All Categories</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Headphones</a></li>
-                    <li class="active">Product name goes here</li>
+                    <li><a href="{{ route("shop.category.index", $productInformation["categories"][0]) }}">{{ $productInformation["categories"][0] }}</a></li>
+                    <li class="active">{{ $productInformation["name"] }}</li>
                 </ul>
             </div>
         </div>
-        <!-- /row -->
     </div>
-    <!-- /container -->
 </div>
