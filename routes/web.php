@@ -4,19 +4,8 @@ Auth::routes();
 
 Route::get("/teste", function ()
 {
-    $products = \App\Models\Catalog\Product::all();
 
-    $studentsInfo = [];
 
-    foreach($products as $product)
-    {
-        // $data = (new \App\Dominio\Catalog\ProductInformation($product->id))->get();
-        $data = (new \App\Dominio\Catalog\ProductInformation(10))->get();
-        \Symfony\Component\VarDumper\VarDumper::dump($data);
-        die();
-    }
-
-    return 0;
 
 });
 
