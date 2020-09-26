@@ -2,13 +2,6 @@
 
 Auth::routes();
 
-Route::get("/teste", function ()
-{
-
-
-
-});
-
 Route::group(["as" => "site."], function ()
 {
     Route::get('/', function ()

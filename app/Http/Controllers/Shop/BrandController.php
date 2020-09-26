@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Components\CollectionHelper;
-use App\Facade\Shop;
 use App\Models\Catalog\Brand;
-use App\Models\Catalog\Category;
+use App\Models\Catalog\BrandProduct;
+use App\Models\Catalog\Product;
 use Illuminate\Http\Request;
-use Symfony\Component\VarDumper\VarDumper;
 
 class BrandController
 {
@@ -15,13 +14,11 @@ class BrandController
     {
         $brand = Brand::where(["name" => $name])->first();
 
-        VarDumper::dump($brand);
-        die();
-
-        $products = Shop::getProductsFromCategory($category);
+        $brandProducts = BrandProduct::where(["brand_id" => $brand->id])->get();
+        $products = Product::whereIn("id", $brandProducts->pluck("product_id"))->get();
 
         $products = CollectionHelper::paginate($products, $products->count(), 9);
 
-        return view("shop.category.index", compact("category", "products"));
+        return view("shop.brand.index", compact("brand", "products"));
     }
 }
