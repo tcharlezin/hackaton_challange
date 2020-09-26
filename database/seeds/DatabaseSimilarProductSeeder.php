@@ -20,16 +20,12 @@ class DatabaseSimilarProductSeeder extends Seeder
     {
         $file = database_path('data/FACL_products.csv');
 
-        // Read a CSV file
         $handle = fopen($file, 'r');
 
-        // Optionally, you can keep the number of the line where
-        // the loop its currently iterating over
         $lineNumber = 1;
 
         $erros = collect();
 
-        // Iterate over every line of the file
         while (($raw_string = fgets($handle)) !== false)
         {
             try
@@ -41,7 +37,6 @@ class DatabaseSimilarProductSeeder extends Seeder
                     continue;
                 }
 
-                // Parse the raw csv string: "1, a, b, c"
                 $sku = $this->parseData(trim($raw_string), $lineNumber);
 
                 $categories = explode(
@@ -103,9 +98,7 @@ class DatabaseSimilarProductSeeder extends Seeder
                 }
                 else
                 {
-                    \Symfony\Component\VarDumper\VarDumper::dump($newSku);
-                    \Symfony\Component\VarDumper\VarDumper::dump("Sku ja existe!");
-                    die();
+                    continue;
                 }
 
                 foreach($categoryCollection as $category)
@@ -309,7 +302,6 @@ class DatabaseSimilarProductSeeder extends Seeder
                             $attributeSku = \App\Models\Catalog\AttributeSku::create($dataAttributeSku);
                         }
                     }
-
                 }
                 catch (Exception $ex)
                 {
@@ -317,45 +309,12 @@ class DatabaseSimilarProductSeeder extends Seeder
                     $erros->push($sku);
                     continue;
                 }
-
-                \Symfony\Component\VarDumper\VarDumper::dump($newSku->id);
-
-                continue;
-
-                // ALL_PRODUCT_ATTRIBUTES
-
-
-                // array:21 [
-                //     "SKU_ID" => "764953"
-                //     "PRODUCT_ID" => "764941"
-                //     "PRODUCT_BRAND_NAME" => "MAIDENFORM"
-                //     "PRODUCT_NAME" => "Faja modeladora control medio"
-                //     "PRODUCT_GENDER" => "Mujer"
-                //     "PRODUCT_AVG_OVERALL_RATING" => ""
-                //     "PRODUCT_MERCHANT_CATEGORY_ID" => "J06010301"
-                //     "PRODUCT_PARENT_CATEGORY_NAMES" => ""Fajas y Modeladores,Trajes de Banos y Bikinis,Triumph""
-                //     "PRODUCT_ATTR_FORMATO" => ""
-                //     "PRODUCT_ATTR_TOP_SPECIFICATIONS" => ""Modelo: 6868CINTUR,Tipo: Fajas post quirúrgicas,Género: Mujer,Tipo de control: Medio,Breteles ajustables: Sin breteles""
-                //     "PRODUCT_ATTR_MODELO" => "6868CINTUR"
-                //     "PRODUCT_ATTR_TIPO" => "Fajas post quirúrgicas"
-                //     "VARIANT_NAME" => "Faja modeladora control medio"
-                //     "VARIANT_ATTR_COLOR_GROUP" => "Beige"
-                //     "VARIANT_ATTR_PRIMARY_COLOR" => "Beige"
-                //     "VARIANT_ATTR_SIZE" => "l"
-                //     "VARIANT_SELLER_ID" => "FALABELLA"
-                //     "PRICE_NORMAL_DEFAULT" => "29900"
-                //     "SKU_ID_PHOTO_URL" => "https://falabella.scene7.com/is/image/Falabella/764953_1?wid=500&hei=500&qlt=70"
-                //     "PRODUCT_ID_PHOTO_URL" => "https://falabella.scene7.com/is/image/Falabella/764941_1?wid=500&hei=500&qlt=70"
-                //     "ALL_PRODUCT_ATTRIBUTES" => "1-Breteles ajustables: Sin breteles; 2-Diseño: Liso; 3-Género: Mujer; 4-Modelo (Internet): 6868CINTUR; 5-Tipo de control: Medio; 6-Tipo: Fajas post quirúrgicas"
-                //   ]
-
-            } catch (\Throwable $th) {
-                \Symfony\Component\VarDumper\VarDumper::dump($attributes);
-                \Symfony\Component\VarDumper\VarDumper::dump($sku);
-                dd($th);
-                die();
             }
-            // Increase the current line
+            catch (\Throwable $th)
+            {
+                continue;
+            }
+
             $lineNumber++;
         }
 

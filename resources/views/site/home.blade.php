@@ -1,6 +1,6 @@
 @extends('site.app')
 
-@section("titulo", "010bit - Default")
+@section("titulo", "#WeArBrDevsHackathon")
 
 @section('content')
 

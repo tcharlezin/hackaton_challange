@@ -2,7 +2,7 @@
 
 namespace App\Dominio\Catalog;
 
-class ProductRecomendation
+class ProductScoreRecomendation
 {
     private $productId;
 
@@ -18,78 +18,40 @@ class ProductRecomendation
         $data["brands"] = $this->getBrands();
         $data["images"] = $this->getImages();
 
-        // $data = $this->solutionWithSum($data);
-        $data = $this->solutionWithLogImplode($data);
+        $data = $this->solutionWithSum($data);
+        // $data = $this->solutionWithLogImplode($data);
+
+        return $data;
+    }
+
+    private function solutionWithLogImplode($data)
+    {
+        $data = $this->processPreData($data);
+
+        $data["seller"] = log(implode("", $data["seller"]));
+        $data["sku"] = log(implode("", $data["sku"]));
+        $data["price"] = log((float) implode("", $data["price"]));
+        $data["attribute"] = log(implode("", $data["attribute"]));
+        $data["brands"] = log(implode("", $data["brands"]));
+        $data["images"] = log(implode("", $data["images"]));
 
         return $data;
     }
 
     private function solutionWithSum($data)
     {
-        if(isset($data["seller"]))
-        {
-            rsort($data["seller"]);
-        }
-        else
-        {
-            $data["seller"] = 0;
-        }
+        $data = $this->processPreData($data);
 
-        if(isset($data["sku"]))
-        {
-            rsort($data["sku"]);
-        }
-        else
-        {
-            $data["sku"] = 0;
-        }
-
-        if(isset($data["price"]))
-        {
-            rsort($data["price"]);
-        }
-        else
-        {
-            $data["price"] = 0;
-        }
-
-        if(isset($data["attribute"]))
-        {
-            rsort($data["attribute"]);
-        }
-        else
-        {
-            $data["attribute"] = 0;
-        }
-
-        if(isset($data["brands"]))
-        {
-            rsort($data["brands"]);
-        }
-        else
-        {
-            $data["brands"] = 0;
-        }
-
-        if(isset($data["images"]))
-        {
-            rsort($data["images"]);
-        }
-        else
-        {
-            $data["images"] = 0;
-        }
-
-        $data["seller"] = array_sum($data["seller"]);
-        $data["sku"] = array_sum($data["sku"]);
-        $data["price"] = array_sum($data["price"]);
-        $data["attribute"] = array_sum($data["attribute"]);
-        $data["brands"] = array_sum($data["brands"]);
-        $data["images"] = array_sum($data["images"]);
+        $data["seller"] = log(array_sum($data["seller"]));
+        $data["sku"] = log(array_sum($data["sku"]));
+        $data["price"] = log(array_sum($data["price"]));
+        $data["attribute"] = log(array_sum($data["attribute"]));
+        $data["brands"] = log(array_sum($data["brands"]));
+        $data["images"] = log(array_sum($data["images"]));
         return $data;
     }
 
-    private function solutionWithLogImplode($data)
+    private function processPreData($data)
     {
         if(isset($data["seller"]))
         {
@@ -145,13 +107,6 @@ class ProductRecomendation
             $data["images"] = [0];
         }
 
-        $data["seller"] = log(implode("", $data["seller"]));
-        $data["sku"] = log(implode("", $data["sku"]));
-        $data["price"] = log((float) implode("", $data["price"]));
-        $data["attribute"] = log(implode("", $data["attribute"]));
-        $data["brands"] = log(implode("", $data["brands"]));
-        $data["images"] = log(implode("", $data["images"]));
-
         return $data;
     }
 
@@ -159,11 +114,11 @@ class ProductRecomendation
     {
         $query = sprintf('
         SELECT
-        sku.product_id as productId,
-        seller.id as sellerId,
-        sku.id as skuId,
-        sku.price as price,
-        attr.id as attributeId
+            sku.product_id as productId,
+            seller.id as sellerId,
+            sku.id as skuId,
+            sku.price as price,
+            attr.id as attributeId
 
           FROM attributes as attr
     INNER JOIN attribute_sku as attrs

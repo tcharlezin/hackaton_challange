@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Dominio\Catalog\ProductInformation;
-use App\Dominio\Catalog\ProductRecomendation;
+use App\Dominio\Catalog\ProductScoreRecomendation;
 use App\Models\Catalog\CategoryProduct;
 use App\Models\Catalog\Product;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class ProductController
 
     private function recomendation(Product $productDefault)
     {
-        $defaultRecomendation = (new ProductRecomendation($productDefault->id))->get();
+        $defaultRecomendation = (new ProductScoreRecomendation($productDefault->id))->get();
 
         $products = $this->getProductsFromSharedCategory($productDefault);
 
@@ -33,7 +33,7 @@ class ProductController
 
         foreach($products as $product)
         {
-            $data = array_values((new ProductRecomendation($product->id))->get());
+            $data = array_values((new ProductScoreRecomendation($product->id))->get());
             $studentsInfo["{$product->id}"] = $data;
         }
 
