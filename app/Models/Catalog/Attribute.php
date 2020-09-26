@@ -4,8 +4,7 @@ namespace App\Models\Catalog;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Attribute extends Model
 {
-    protected $fillable = ["name"];
     protected $guarded = [];
 }

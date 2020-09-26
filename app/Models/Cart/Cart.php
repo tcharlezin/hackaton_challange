@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    //
+    protected $fillable = ["code", "user_id", "finished"];
 }

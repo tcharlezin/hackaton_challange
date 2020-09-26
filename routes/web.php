@@ -2,6 +2,12 @@
 
 Auth::routes();
 
+Route::get("/teste", function ()
+{
+    \Symfony\Component\VarDumper\VarDumper::dump(\App\Models\Catalog\Category::all());
+
+});
+
 Route::group(["as" => "site."], function ()
 {
     Route::get('/', function ()
