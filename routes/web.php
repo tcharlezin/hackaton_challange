@@ -4,8 +4,8 @@ Auth::routes();
 
 Route::get("/teste", function ()
 {
-    \Symfony\Component\VarDumper\VarDumper::dump(\App\Models\Catalog\Category::all());
-
+    $data = (new \App\Dominio\Catalog\ProductInformation(1))->get();
+    \Symfony\Component\VarDumper\VarDumper::dump($data);
 });
 
 Route::group(["as" => "site."], function ()
