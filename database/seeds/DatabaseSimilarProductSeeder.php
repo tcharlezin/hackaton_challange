@@ -159,6 +159,8 @@ class DatabaseSimilarProductSeeder extends Seeder
                     ]);
                 }
 
+                continue;
+                
                 \Symfony\Component\VarDumper\VarDumper::dump($sku['ALL_PRODUCT_ATTRIBUTES']);
                 // ALL_PRODUCT_ATTRIBUTES
 
