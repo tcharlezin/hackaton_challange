@@ -71,7 +71,12 @@ class ProductController
 
         $categoryProducts = CategoryProduct::whereIn("category_id", $categoryProducts->pluck("category_id"))->get();
 
-        $products = Product::whereIn("id", $categoryProducts->pluck("product_id")->unique())->get()->random(200);
+        $products = Product::whereIn("id", $categoryProducts->pluck("product_id")->unique())->get();
+
+        if($products->count() > 100)
+        {
+            return $products->random(100);
+        }
 
         return $products;
     }
