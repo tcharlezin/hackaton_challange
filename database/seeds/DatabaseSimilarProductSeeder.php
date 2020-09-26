@@ -159,9 +159,10 @@ class DatabaseSimilarProductSeeder extends Seeder
                     ]);
                 }
 
-                continue;
-                
+
                 \Symfony\Component\VarDumper\VarDumper::dump($sku['ALL_PRODUCT_ATTRIBUTES']);
+                die();
+                
                 // ALL_PRODUCT_ATTRIBUTES
 
 
@@ -175,6 +176,9 @@ class DatabaseSimilarProductSeeder extends Seeder
                         'featured' => 0,
                     ]
                 );
+
+                //     "ALL_PRODUCT_ATTRIBUTES" => "1-Breteles ajustables: Sin breteles; 2-Diseño: Liso; 3-Género: Mujer; 4-Modelo (Internet): 6868CINTUR; 5-Tipo de control: Medio; 6-Tipo: Fajas post quirúrgicas"
+
 
                 // array:21 [
                 //     "SKU_ID" => "764953"
