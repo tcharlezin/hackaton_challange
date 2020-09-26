@@ -61,8 +61,6 @@
 
                                         @php
                                             $productInformation = (new \App\Dominio\Catalog\ProductInformation($product->id))->get();
-
-                                            $categoryName = $category->name;
                                             $name = $productInformation["name"];
                                             $productImage = $productInformation["images"][0];
                                             $productPrice = $productInformation["price"][0];
