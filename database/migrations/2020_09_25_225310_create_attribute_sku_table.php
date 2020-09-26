@@ -18,11 +18,9 @@ class CreateAttributeSkuTable extends Migration
             $table->foreign('sku_id')->references('id')->on('skus');
             $table->unsignedBigInteger('attribute_id');
             $table->foreign('attribute_id')->references('id')->on('attributes');
-            $table->string('value');
+            $table->text('value');
             $table->boolean('featured')->default(0);
             $table->timestamps();
-
-            $table->primary(['sku_id', 'attribute_id']);
         });
     }
 

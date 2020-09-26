@@ -6,7 +6,6 @@ use App\Models\Catalog\Product;
 use App\Models\Catalog\Seller;
 use App\Models\Catalog\Sku;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseSimilarProductSeeder extends Seeder
 {
@@ -27,6 +26,8 @@ class DatabaseSimilarProductSeeder extends Seeder
         // Optionally, you can keep the number of the line where
         // the loop its currently iterating over
         $lineNumber = 1;
+
+        $erros = collect();
 
         // Iterate over every line of the file
         while (($raw_string = fgets($handle)) !== false)
@@ -159,25 +160,165 @@ class DatabaseSimilarProductSeeder extends Seeder
                     ]);
                 }
 
+                try
+                {
+                    $attributes = explode("; ", $sku['ALL_PRODUCT_ATTRIBUTES']);
 
-                \Symfony\Component\VarDumper\VarDumper::dump($sku['ALL_PRODUCT_ATTRIBUTES']);
-                die();
-                
+                    $saveAttribute = [];
+
+                    foreach($attributes as $index => $tempAttributes)
+                    {
+                        $attributeArray = explode(": ", $tempAttributes);
+
+                        if(! isset($attributeArray[1]))
+                        {
+                            $saveAttribute[$index] = $attributeArray[0];
+                        }
+                    }
+
+                    // Validate if is correct string to attributes
+                    if(! collect($saveAttribute)->isEmpty())
+                    {
+                        foreach($saveAttribute as $index => $saveAttributeTmp)
+                        {
+                            if($index > 0)
+                            {
+                                $attributes[$index-1] = $attributes[$index-1] . "; " . $saveAttributeTmp;
+                            }
+
+                            unset($attributes[$index]);
+                        }
+                    }
+
+                    foreach($attributes as $attributeCurrent)
+                    {
+                        $pos = (strpos($attributeCurrent, '-')+1);
+                        $attributeClean = substr($attributeCurrent, $pos, strlen($attributeCurrent));
+
+                        if(strlen(trim($attributeClean)) == 0)
+                        {
+                            continue;
+                        }
+
+                        $attributeArray = explode(": ", $attributeClean);
+
+                        $attributeName = $attributeArray[0];
+
+                        // TODO: Need to fix
+                        if(! isset($attributeArray[1]))
+                        {
+                            continue;
+                        }
+
+                        $attributeValue = $attributeArray[1];
+
+                        $attribute = Attribute::where(["name" => $attributeName])->first();
+                        if(is_null($attribute))
+                        {
+                            $attribute = Attribute::create(
+                                [
+                                    "name" => $attributeName,
+                                    "has_options" => false
+                                ]
+                            );
+                        }
+
+                        $dataAttributeSku = [
+                            'sku_id' => $newSku->id,
+                            'attribute_id' => $attribute->id,
+                            'value' => $attributeValue,
+                            'featured' => false,
+                        ];
+
+                        $attributeSku = \App\Models\Catalog\AttributeSku::where($dataAttributeSku)->first();
+                        if(is_null($attributeSku))
+                        {
+                            $attributeSku = \App\Models\Catalog\AttributeSku::create($dataAttributeSku);
+                        }
+                    }
+
+                    $variantColorGroup = $sku['VARIANT_ATTR_COLOR_GROUP'];
+                    if($variantColorGroup)
+                    {
+                        $attribute = Attribute::where(["name" => "Cor Grupo"])->first();
+                        if(is_null($attribute))
+                        {
+                            $attribute = Attribute::create(["name" => "Cor Grupo", "has_options" => false]);
+                        }
+
+                        $dataAttributeSku = [
+                            'sku_id' => $newSku->id,
+                            'attribute_id' => $attribute->id,
+                            'value' => $variantColorGroup,
+                            'featured' => false,
+                        ];
+
+                        $attributeSku = \App\Models\Catalog\AttributeSku::where($dataAttributeSku)->first();
+                        if(is_null($attributeSku))
+                        {
+                            $attributeSku = \App\Models\Catalog\AttributeSku::create($dataAttributeSku);
+                        }
+                    }
+
+                    $variantPrimaryColor = $sku['VARIANT_ATTR_PRIMARY_COLOR'];
+                    if($variantPrimaryColor)
+                    {
+                        $attribute = Attribute::where(["name" => "Cor Primaria"])->first();
+                        if(is_null($attribute))
+                        {
+                            $attribute = Attribute::create(["name" => "Cor Primaria", "has_options" => false]);
+                        }
+
+                        $dataAttributeSku = [
+                            'sku_id' => $newSku->id,
+                            'attribute_id' => $attribute->id,
+                            'value' => $variantPrimaryColor,
+                            'featured' => false,
+                        ];
+
+                        $attributeSku = \App\Models\Catalog\AttributeSku::where($dataAttributeSku)->first();
+                        if(is_null($attributeSku))
+                        {
+                            $attributeSku = \App\Models\Catalog\AttributeSku::create($dataAttributeSku);
+                        }
+                    }
+
+                    $variantSize = $sku['VARIANT_ATTR_SIZE'];
+                    if($variantSize)
+                    {
+                        $attribute = Attribute::where(["name" => "Size"])->first();
+                        if(is_null($attribute))
+                        {
+                            $attribute = Attribute::create(["name" => "Size", "has_options" => false]);
+                        }
+
+                        $dataAttributeSku = [
+                            'sku_id' => $newSku->id,
+                            'attribute_id' => $attribute->id,
+                            'value' => $variantSize,
+                            'featured' => false,
+                        ];
+
+                        $attributeSku = \App\Models\Catalog\AttributeSku::where($dataAttributeSku)->first();
+                        if(is_null($attributeSku))
+                        {
+                            $attributeSku = \App\Models\Catalog\AttributeSku::create($dataAttributeSku);
+                        }
+                    }
+
+                }
+                catch (Exception $ex)
+                {
+                    \Symfony\Component\VarDumper\VarDumper::dump(sprintf("erro na sku %s ", $newSku->id));
+                    $erros->push($sku);
+                    continue;
+                }
+
+                \Symfony\Component\VarDumper\VarDumper::dump($newSku->id);
+
+                continue;
+
                 // ALL_PRODUCT_ATTRIBUTES
-
-
-                $newSku->attributes()->attach(
-                    Attribute::firstOrCreate([
-                        'name' => 'gender',
-                        'has_options' => 0,
-                    ])->id,
-                    [
-                        'value' => $sku['PRODUCT_GENDER'],
-                        'featured' => 0,
-                    ]
-                );
-
-                //     "ALL_PRODUCT_ATTRIBUTES" => "1-Breteles ajustables: Sin breteles; 2-Diseño: Liso; 3-Género: Mujer; 4-Modelo (Internet): 6868CINTUR; 5-Tipo de control: Medio; 6-Tipo: Fajas post quirúrgicas"
 
 
                 // array:21 [
@@ -204,18 +345,19 @@ class DatabaseSimilarProductSeeder extends Seeder
                 //     "ALL_PRODUCT_ATTRIBUTES" => "1-Breteles ajustables: Sin breteles; 2-Diseño: Liso; 3-Género: Mujer; 4-Modelo (Internet): 6868CINTUR; 5-Tipo de control: Medio; 6-Tipo: Fajas post quirúrgicas"
                 //   ]
 
-                DB::commit();
             } catch (\Throwable $th) {
+                \Symfony\Component\VarDumper\VarDumper::dump($attributes);
+                \Symfony\Component\VarDumper\VarDumper::dump($sku);
                 dd($th);
-                DB::rollBack();
                 die();
             }
             // Increase the current line
             $lineNumber++;
         }
 
-
         fclose($handle);
+
+        echo $erros->toJson();
     }
 
     public function parseData($sku, $key)
