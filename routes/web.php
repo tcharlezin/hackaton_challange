@@ -4,8 +4,20 @@ Auth::routes();
 
 Route::get("/teste", function ()
 {
-    $data = (new \App\Dominio\Catalog\ProductInformation(1))->get();
-    \Symfony\Component\VarDumper\VarDumper::dump($data);
+    $products = \App\Models\Catalog\Product::all()->random(10);
+
+    $studentsInfo = [];
+
+    foreach($products as $product)
+    {
+        // $data = (new \App\Dominio\Catalog\ProductInformation($product->id))->get();
+        $data = (new \App\Dominio\Catalog\ProductInformation(5))->get();
+        \Symfony\Component\VarDumper\VarDumper::dump($data);
+        die();
+    }
+
+    return 0;
+
 });
 
 Route::group(["as" => "site."], function ()

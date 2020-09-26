@@ -18,6 +18,15 @@ class ProductInformation
         $data = $this->generateSkusInformation();
         $data["categories"] = $this->getCategories();
         $data["name"] = $this->getName();
+        $data["images"] = $this->getImages();
+
+        foreach($data["attribute"] as $keyName => $attribute)
+        {
+            $data[$keyName] = $attribute;
+        }
+
+        unset($data["attribute"]);
+
         return $data;
     }
 
@@ -87,6 +96,42 @@ class ProductInformation
     private function getName()
     {
         return Product::find($this->productId)->name;
+    }
+
+    private function getImages()
+    {
+        $query = sprintf("
+            SELECT img.url
+            FROM image_product as imgprod
+            INNER JOIN images as img
+            ON img.id = imgprod.image_id
+            WHERE imgprod.product_id = %s
+        ;", $this->productId);
+
+        $rows = \DB::select($query);
+
+        $response = [];
+
+        foreach($rows as $row)
+        {
+            $response[] = $row->url;
+        }
+
+        $query = sprintf("
+        SELECT distinct(img.url)
+          FROM image_sku as imgsku
+    INNER JOIN images as img
+            ON img.id = imgsku.image_id
+           AND imgsku.sku_id IN (SELECT id FROM skus WHERE product_id = %s);", $this->productId);
+
+        $rows = \DB::select($query);
+
+        foreach($rows as $row)
+        {
+            $response[] = $row->url;
+        }
+
+        return array_unique($response);
     }
 
 }
