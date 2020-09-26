@@ -10,15 +10,14 @@
 
             @foreach($categories as $category)
                 <div class="input-checkbox">
-                    <input type="checkbox" id="category-1">
-                    <label for="category-1">
-                        <span></span>
-                        {{ $category->name }}
-                    </label>
+                    <a href="{{route("shop.category.index", $category->name)}}">
+                        <label for="category-{{ $category->name }}">
+                            <span></span>
+                            {!! $category->name !!}
+                        </label>
+                    </a>
                 </div>
             @endforeach
-
-
 
         </div>
     </div>
