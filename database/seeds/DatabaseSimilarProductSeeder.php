@@ -162,7 +162,6 @@ class DatabaseSimilarProductSeeder extends Seeder
                 \Symfony\Component\VarDumper\VarDumper::dump($sku['ALL_PRODUCT_ATTRIBUTES']);
                 // ALL_PRODUCT_ATTRIBUTES
 
-                continue;
 
                 $newSku->attributes()->attach(
                     Attribute::firstOrCreate([
