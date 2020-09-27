@@ -27,21 +27,23 @@
                         @endphp
 
                         <div class="col-md-3 col-xs-6">
-                            <div class="product">
-                                <div class="product-img">
-                                    <img src="{{ $productInformation["images"][0] }}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">{{ $name }}</a></h3>
-                                    <h4 class="product-price">${{$productPrice}}</h4>
-                                    <div class="product-rating">
+                            <a href="{{route("shop.product.index", $productRecomended->name)}}">
+                                <div class="product">
+                                    <div class="product-img">
+                                        <img src="{{ $productInformation["images"][0] }}" alt="">
+                                    </div>
+                                    <div class="product-body">
+                                        <p class="product-category">Category</p>
+                                        <h3 class="product-name"><a href="#">{{ $name }}</a></h3>
+                                        <h4 class="product-price">${{$productPrice}}</h4>
+                                        <div class="product-rating">
+                                        </div>
+                                    </div>
+                                    <div class="add-to-cart">
+                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                     </div>
                                 </div>
-                                <div class="add-to-cart">
-                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                </div>
-                            </div>
+                            </a>
                         </div>
 
                     @endforeach

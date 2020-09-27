@@ -37,4 +37,19 @@ class ShopFacade
         $products = Product::whereIn("id", collect($rows)->pluck("product_id"))->get();
         return $products;
     }
+
+    public function getProductsToShow($amount)
+    {
+        return \App\Models\Catalog\Product::all()->random($amount);
+    }
+
+    public function getCategoryToShow($amount)
+    {
+        return \App\Models\Catalog\Category::all()->random($amount);
+    }
+
+    public function getBrandToShow($amount)
+    {
+        return \App\Models\Catalog\Brand::all()->random($amount);
+    }
 }

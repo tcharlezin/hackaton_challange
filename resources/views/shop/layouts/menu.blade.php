@@ -7,7 +7,7 @@
                 $categories = \App\Facade\Shop::getCategoriesMenu();
             @endphp
 
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="{{route("shop.index")}}">Home</a></li>
 
             @foreach($categories as $category)
                 <li><a href="{{ route("shop.category.index", $category->name) }}">{{$category->name}}</a></li>

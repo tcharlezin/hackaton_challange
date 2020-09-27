@@ -4,7 +4,7 @@
         <div class="checkbox-filter">
 
             @php
-                $categories = \App\Models\Catalog\Category::all()->random(10);
+                $categories = \App\Facade\Shop::getCategoryToShow(10);
             @endphp
 
             @foreach($categories as $category)
@@ -44,7 +44,7 @@
         <div class="checkbox-filter">
 
             @php
-                $brands = \App\Models\Catalog\Brand::all()->random(10);
+                $brands = \App\Facade\Shop::getBrandToShow(10);
             @endphp
 
             @foreach($brands as $brand)
