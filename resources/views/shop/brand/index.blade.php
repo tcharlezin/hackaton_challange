@@ -23,6 +23,4 @@
     </div>
 </div>
 
-@include("shop.components.newsletter")
-
 @endsection
