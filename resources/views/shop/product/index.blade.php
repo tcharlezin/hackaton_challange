@@ -18,6 +18,4 @@
 
 @include("shop.components.related-products")
 
-@include("shop.components.newsletter")
-
 @endsection
