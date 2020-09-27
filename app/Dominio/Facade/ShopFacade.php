@@ -40,16 +40,37 @@ class ShopFacade
 
     public function getProductsToShow($amount)
     {
-        return \App\Models\Catalog\Product::all()->random($amount);
+        $products = \App\Models\Catalog\Product::all();
+
+        if($products->count() < $amount)
+        {
+            return $products;
+        }
+
+        return $products->random($amount);
     }
 
     public function getCategoryToShow($amount)
     {
-        return \App\Models\Catalog\Category::all()->random($amount);
+        $categories = \App\Models\Catalog\Category::all();
+
+        if($categories->count() < $amount)
+        {
+            return $categories;
+        }
+
+        return $categories->random($amount);
     }
 
     public function getBrandToShow($amount)
     {
-        return \App\Models\Catalog\Brand::all()->random($amount);
+        $brands = \App\Models\Catalog\Brand::all();
+
+        if($brands->count() < $amount)
+        {
+            return $brands;
+        }
+
+        return $brands->random($amount);
     }
 }

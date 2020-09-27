@@ -52,7 +52,7 @@
                             <div class="cart-dropdown">
 
                                 @php
-                                    $products = \App\Models\Catalog\Product::all()->random(3);
+                                    $products = \App\Facade\Shop::getProductsToShow(3);
                                 @endphp
 
                                 <div class="cart-list">
