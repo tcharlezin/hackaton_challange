@@ -30,7 +30,7 @@
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
-                        <form>
+                        <form onsubmit="return false;">
                             <input class="input" placeholder="Search here">
                             <button class="search-btn">Search</button>
                         </form>
