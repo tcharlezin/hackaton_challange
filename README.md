@@ -7,6 +7,7 @@
 - docker-compose up -d
 - unzip database/data/FACL_products-csv.zip
 - docker-compose exec app bash
+- php composer install
 - php artisan migrate --seed
 
 
