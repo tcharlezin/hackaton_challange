@@ -6,12 +6,12 @@
 - cp .env.example .env
 - docker-compose up -d
 - unzip database/data/FACL_products-csv.zip
-- docker-compose exec bash
+- docker-compose exec app bash
 - php artisan migrate --seed
 
 
 # Web Application
-- go to localhost:80 
+- go to localhost:8000
 
 # API Application
 
