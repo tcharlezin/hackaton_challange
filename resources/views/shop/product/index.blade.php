@@ -10,8 +10,6 @@
             @include("shop.product.product-images")
 
             @include("shop.product.product-details")
-
-            @include("shop.product.product-tab")
         </div>
     </div>
 </div>
