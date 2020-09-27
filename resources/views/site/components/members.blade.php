@@ -1,7 +1,7 @@
 <div class="col-sm-3 col-md-2">
     <div class="candidate-box">
         <div class="candidate-box-image">
-            <a href="#">
+            <a href="https://github.com/matias-ecaceres" target="_blank">
                 <img src="{{ asset("site/img/team/matias.jpeg") }}" alt="Peter Ruck">
             </a>
         </div>
@@ -15,7 +15,7 @@
 <div class="col-sm-3 col-md-2">
     <div class="candidate-box">
         <div class="candidate-box-image">
-            <a href="#">
+            <a href="https://github.com/maruamallo" target="_blank">
                 <img src="{{ asset("site/img/team/maru.png") }}" alt="Peter Ruck">
             </a>
         </div>
@@ -29,7 +29,7 @@
 <div class="col-sm-3 col-md-2">
     <div class="candidate-box">
         <div class="candidate-box-image">
-            <a href="#">
+            <a href="https://github.com/lucasschlichting" target="_blank">
                 <img src="{{ asset("site/img/team/lucas.jpeg") }}" alt="Peter Ruck">
             </a>
         </div>
@@ -43,7 +43,7 @@
 <div class="col-sm-3 col-md-2">
     <div class="candidate-box">
         <div class="candidate-box-image">
-            <a href="#">
+            <a href="https://github.com/tdias25" target="_blank">
                 <img src="{{ asset("site/img/team/thiago.jpeg") }}" alt="Peter Ruck">
             </a>
         </div>
@@ -57,7 +57,7 @@
 <div class="col-sm-3 col-md-2">
     <div class="candidate-box">
         <div class="candidate-box-image">
-            <a href="#">
+            <a href="https://github.com/tcharlezin" target="_blank">
                 <img src="{{ asset("site/img/team/tcharles.png") }}" alt="Peter Ruck">
             </a>
         </div>
