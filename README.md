@@ -15,4 +15,4 @@
 
 # API Application
 
-`/api/recomend?code=SKU_ID`
+`/api/recommend?code=SKU_ID`
