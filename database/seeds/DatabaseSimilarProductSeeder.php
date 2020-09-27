@@ -10,6 +10,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Catalog\Category;
 use App\Models\Catalog\ImageSku;
 use App\Models\Catalog\Attribute;
+use Illuminate\Support\Facades\DB;
 use App\Models\Catalog\AttributeSku;
 use App\Models\Catalog\BrandProduct;
 use App\Models\Catalog\ImageProduct;
@@ -27,6 +28,9 @@ class DatabaseSimilarProductSeeder extends Seeder
      */
     public function run()
     {
+        DB::connection()->getPdo()
+        ->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false);
+
         $file = database_path('data/FACL_products-csv.tsv');
 
         $handle = fopen($file, 'r');

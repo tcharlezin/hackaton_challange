@@ -16,6 +16,15 @@ class AddIndexIntoSkuTable extends Migration
         Schema::table('skus', function (Blueprint $table) {
             $table->index('code');
         });
+        Schema::table('attributes', function (Blueprint $table) {
+            $table->index('name');
+        });
+        Schema::table('attribute_sku', function (Blueprint $table) {
+            $table->index(['sku_id', 'attribute_id', 'featured']);
+        });
+        Schema::table('images', function (Blueprint $table) {
+            $table->index('url');
+        });
     }
 
     /**
