@@ -67,3 +67,17 @@
         </div>
     </div>
 </div>
+
+<div class="col-sm-3 col-md-2">
+    <div class="candidate-box">
+        <div class="candidate-box-image">
+            <a href="https://github.com/tcharlezin" target="_blank">
+                <img src="{{ asset("site/img/team/nico.png") }}" alt="Peter Ruck">
+            </a>
+        </div>
+        <div class="candidate-box-content">
+            <h2>Nico P.</h2>
+            <h3>Mentor</h3>
+        </div>
+    </div>
+</div>
