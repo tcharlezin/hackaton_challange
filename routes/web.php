@@ -23,6 +23,8 @@ Route::group(['prefix' => 'shop', "as" => "shop.", 'namespace' => 'Shop' ], func
     Route::get('/checkout', 'CheckoutController@index')->name("checkout");
 
     Route::get('/product/{name}', 'ProductController@index')->name("product.index");
+
+    Route::get('/sku/{code}', 'ProductController@bySku')->name("product.sku");
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',  'middleware' => ['auth'], "as" => "admin."], function ()
