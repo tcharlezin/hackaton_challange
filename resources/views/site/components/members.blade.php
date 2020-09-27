@@ -77,7 +77,7 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="https://github.com/tcharlezin" target="_blank">
-                <img src="{{ asset("site/img/team/nico.png") }}" alt="Nico P.">
+                <img src="{{ asset("site/img/team/nico.jpeg") }}" alt="Nico P.">
             </a>
         </div>
         <div class="candidate-box-content">
