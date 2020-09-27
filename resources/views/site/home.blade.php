@@ -4,24 +4,19 @@
 
 @section('content')
 
-    <div class="hero-content">
+    <div style="padding-top: 50px" class="hero-content">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-12 col-md-12">
                     <h1>Hackaton Falabella</h1>
-                    <h2>Enjoy this new purchase experience for Ecommerces!</h2>
-                    <div>
-                        Add more text about Hackaton...
-                    </div>
                 </div>
-                <div class="col-sm-5 col-md-5 col-md-offset-1">
-                    <div class="hero-content-carousel">
-                        <div class="form-group">
-                            @if( Auth::guest())
-                                @include("site.components.login-register")
-                            @endif
-                        </div>
-                    </div>
+                <div class="col-sm-6 col-md-6">
+                    <h2 class="mb-0 pb-0">What is a "hackathon"?</h2>
+                    <p>A hackathon (also known as a hack day, hackfest or codefest; a portmanteau of hacking marathon) is a design sprint-like event; often, in which computer programmers and others involved in software development, including graphic designers, interface designers, project managers, domain experts, and others collaborate intensively on software projects. <a target="_blank" href="https://en.wikipedia.org/wiki/Hackathon">Wikipedia</a></p>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <h2 class="mb-0 pb-0">What is the goal of our team?</h2>
+                    <p>Our goal is to create an application in which can recommend similar products based on a input product.</p>
                 </div>
             </div>
         </div>
