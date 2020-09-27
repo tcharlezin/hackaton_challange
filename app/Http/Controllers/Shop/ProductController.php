@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\Dominio\Catalog\ProductInformation;
-use App\Dominio\Catalog\ProductScoreRecomendation;
-use App\Models\Catalog\CategoryProduct;
-use App\Models\Catalog\Product;
+use App\Models\Catalog\Sku;
 use Illuminate\Http\Request;
 use Phpml\Clustering\KMeans;
+use App\Models\Catalog\Product;
+use App\Models\Catalog\CategoryProduct;
+use App\Dominio\Catalog\ProductInformation;
+use App\Dominio\Catalog\ProductScoreRecomendation;
 
 class ProductController
 {
@@ -19,6 +20,15 @@ class ProductController
         $productsRecomened = $this->recomendation($product);
 
         return view("shop.product.index", compact("product", "productInformation", "productsRecomened"));
+    }
+
+    public function recomendationApi(Request $request)
+    {
+        $product = Product::find(
+            Sku::where('code', $request->code)->first()->product_id
+        );
+
+        return response()->json($this->recomendation($product));
     }
 
     private function recomendation(Product $productDefault)

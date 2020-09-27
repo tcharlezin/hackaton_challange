@@ -15,3 +15,5 @@ yarn-error.log
 .idea/workspace.xml
 /database/data/FACL_products.csv
 /.idea/
+database/data/*.tsv
+database/data/*.csv

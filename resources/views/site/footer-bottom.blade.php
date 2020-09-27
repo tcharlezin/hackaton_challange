@@ -4,7 +4,7 @@
             &copy; {{env("APP_SITE")}}, {{ \Carbon\Carbon::today()->format("Y") }}.
         </div>
         <div class="footer-bottom-right">
-            Created by <a href="#" target="_blank">#WeArBrDevsHackathon</a>.
+            Created by <a href="#" target="_blank">#WeBrArDevsHackathon</a>.
         </div>
     </div>
 </div>

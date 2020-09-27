@@ -1,11 +1,20 @@
 <?php
 
-use App\Models\Catalog\Attribute;
-use App\Models\Catalog\Category;
-use App\Models\Catalog\Product;
-use App\Models\Catalog\Seller;
 use App\Models\Catalog\Sku;
+use Illuminate\Support\Str;
+use App\Models\Catalog\Brand;
+use App\Models\Catalog\Image;
+use App\Models\Catalog\Seller;
+use App\Models\Catalog\Product;
 use Illuminate\Database\Seeder;
+use App\Models\Catalog\Category;
+use App\Models\Catalog\ImageSku;
+use App\Models\Catalog\Attribute;
+use App\Models\Catalog\AttributeSku;
+use App\Models\Catalog\BrandProduct;
+use App\Models\Catalog\ImageProduct;
+use App\Models\Catalog\CategoryProduct;
+use Symfony\Component\VarDumper\VarDumper;
 
 class DatabaseSimilarProductSeeder extends Seeder
 {
@@ -18,7 +27,7 @@ class DatabaseSimilarProductSeeder extends Seeder
      */
     public function run()
     {
-        $file = database_path('data/FACL_products.csv');
+        $file = database_path('data/FACL_products-csv.tsv');
 
         $handle = fopen($file, 'r');
 
@@ -32,17 +41,14 @@ class DatabaseSimilarProductSeeder extends Seeder
             {
                 if($lineNumber == 1)
                 {
-                    $this->header = str_getcsv(trim($raw_string));
+                    $this->header = str_getcsv($raw_string, "\t");
                     $lineNumber++;
                     continue;
                 }
 
                 $sku = $this->parseData(trim($raw_string), $lineNumber);
 
-                $categories = explode(
-                    ',',
-                    ltrim(rtrim($sku['PRODUCT_PARENT_CATEGORY_NAMES'], '"'), '"')
-                );
+                $categories = explode('>',$sku['PRODUCT_PARENT_CATEGORY_NAMES']);
 
                 $currentParentCatId = null;
 
@@ -92,7 +98,7 @@ class DatabaseSimilarProductSeeder extends Seeder
                         'code' => $sku['SKU_ID'],
                         'name' => $sku['VARIANT_NAME'],
                         'product_id' => $product->id,
-                        'price' => $sku['PRICE_NORMAL_DEFAULT'] / 100,
+                        'price' => $sku['PRICE_NORMAL_DEFAULT'],
                         'seller_id' => $seller->id,
                     ]);
                 }
@@ -108,19 +114,19 @@ class DatabaseSimilarProductSeeder extends Seeder
                         "product_id" => $product->id,
                     ];
 
-                    $categoryProduct = \App\Models\Catalog\CategoryProduct::where($dataCategoryProduct)->first();
+                    $categoryProduct = CategoryProduct::where($dataCategoryProduct)->first();
 
                     if(is_null($categoryProduct))
                     {
-                        \App\Models\Catalog\CategoryProduct::create($dataCategoryProduct);
+                        CategoryProduct::create($dataCategoryProduct);
                     }
                 }
 
-                $brand = \App\Models\Catalog\Brand::where(["name" => $sku['PRODUCT_BRAND_NAME']])->first();
+                $brand = Brand::where(["name" => $sku['PRODUCT_BRAND_NAME']])->first();
 
                 if(is_null($brand))
                 {
-                    $brand = \App\Models\Catalog\Brand::create([
+                    $brand = Brand::create([
                         'name' => $sku['PRODUCT_BRAND_NAME']
                     ]);
                 }
@@ -130,28 +136,28 @@ class DatabaseSimilarProductSeeder extends Seeder
                     "product_id" => $product->id,
                 ];
 
-                $brandProduct = \App\Models\Catalog\BrandProduct::where($dataBrandProduct)->first();
+                $brandProduct = BrandProduct::where($dataBrandProduct)->first();
 
                 if(is_null($brandProduct))
                 {
-                    \App\Models\Catalog\BrandProduct::create($dataBrandProduct);
+                    BrandProduct::create($dataBrandProduct);
                 }
 
-                $skuImage = \App\Models\Catalog\Image::where(["url" => $sku['SKU_ID_PHOTO_URL'] ])->first();
+                $skuImage = Image::where(["url" => $sku['SKU_ID_PHOTO_URL'] ])->first();
                 if(is_null($skuImage))
                 {
-                    $skuImage = \App\Models\Catalog\Image::create(["url" => $sku['SKU_ID_PHOTO_URL'] ]);
-                    \App\Models\Catalog\ImageSku::create([
+                    $skuImage = Image::create(["url" => $sku['SKU_ID_PHOTO_URL'] ]);
+                    ImageSku::create([
                         "sku_id" => $newSku->id,
                         "image_id" => $skuImage->id,
                     ]);
                 }
 
-                $productImage = \App\Models\Catalog\Image::where(["url" => $sku['PRODUCT_ID_PHOTO_URL'] ])->first();
+                $productImage = Image::where(["url" => $sku['PRODUCT_ID_PHOTO_URL'] ])->first();
                 if(is_null($productImage))
                 {
-                    $productImage = \App\Models\Catalog\Image::create(["url" => $sku['PRODUCT_ID_PHOTO_URL'] ]);
-                    \App\Models\Catalog\ImageProduct::create([
+                    $productImage = Image::create(["url" => $sku['PRODUCT_ID_PHOTO_URL'] ]);
+                    ImageProduct::create([
                         "product_id" => $product->id,
                         "image_id" => $productImage->id,
                     ]);
@@ -159,45 +165,11 @@ class DatabaseSimilarProductSeeder extends Seeder
 
                 try
                 {
-                    $attributes = explode("; ", $sku['ALL_PRODUCT_ATTRIBUTES']);
-
-                    $saveAttribute = [];
-
-                    foreach($attributes as $index => $tempAttributes)
-                    {
-                        $attributeArray = explode(": ", $tempAttributes);
-
-                        if(! isset($attributeArray[1]))
-                        {
-                            $saveAttribute[$index] = $attributeArray[0];
-                        }
-                    }
-
-                    // Validate if is correct string to attributes
-                    if(! collect($saveAttribute)->isEmpty())
-                    {
-                        foreach($saveAttribute as $index => $saveAttributeTmp)
-                        {
-                            if($index > 0)
-                            {
-                                $attributes[$index-1] = $attributes[$index-1] . "; " . $saveAttributeTmp;
-                            }
-
-                            unset($attributes[$index]);
-                        }
-                    }
+                    $attributes = explode("|", $sku['ALL_PRODUCT_ATTRIBUTES']);
 
                     foreach($attributes as $attributeCurrent)
                     {
-                        $pos = (strpos($attributeCurrent, '-')+1);
-                        $attributeClean = substr($attributeCurrent, $pos, strlen($attributeCurrent));
-
-                        if(strlen(trim($attributeClean)) == 0)
-                        {
-                            continue;
-                        }
-
-                        $attributeArray = explode(": ", $attributeClean);
+                        $attributeArray = explode(":", $attributeCurrent);
 
                         $attributeName = $attributeArray[0];
 
@@ -227,20 +199,20 @@ class DatabaseSimilarProductSeeder extends Seeder
                             'featured' => false,
                         ];
 
-                        $attributeSku = \App\Models\Catalog\AttributeSku::where($dataAttributeSku)->first();
+                        $attributeSku = AttributeSku::where($dataAttributeSku)->first();
                         if(is_null($attributeSku))
                         {
-                            $attributeSku = \App\Models\Catalog\AttributeSku::create($dataAttributeSku);
+                            $attributeSku = AttributeSku::create($dataAttributeSku);
                         }
                     }
 
                     $variantColorGroup = $sku['VARIANT_ATTR_COLOR_GROUP'];
                     if($variantColorGroup)
                     {
-                        $attribute = Attribute::where(["name" => "Cor Grupo"])->first();
+                        $attribute = Attribute::where(["name" => "Colorr Grupo"])->first();
                         if(is_null($attribute))
                         {
-                            $attribute = Attribute::create(["name" => "Cor Grupo", "has_options" => false]);
+                            $attribute = Attribute::create(["name" => "Colorr Grupo", "has_options" => false]);
                         }
 
                         $dataAttributeSku = [
@@ -250,20 +222,20 @@ class DatabaseSimilarProductSeeder extends Seeder
                             'featured' => false,
                         ];
 
-                        $attributeSku = \App\Models\Catalog\AttributeSku::where($dataAttributeSku)->first();
+                        $attributeSku = AttributeSku::where($dataAttributeSku)->first();
                         if(is_null($attributeSku))
                         {
-                            $attributeSku = \App\Models\Catalog\AttributeSku::create($dataAttributeSku);
+                            $attributeSku = AttributeSku::create($dataAttributeSku);
                         }
                     }
 
                     $variantPrimaryColor = $sku['VARIANT_ATTR_PRIMARY_COLOR'];
                     if($variantPrimaryColor)
                     {
-                        $attribute = Attribute::where(["name" => "Cor Primaria"])->first();
+                        $attribute = Attribute::where(["name" => "Color Primario"])->first();
                         if(is_null($attribute))
                         {
-                            $attribute = Attribute::create(["name" => "Cor Primaria", "has_options" => false]);
+                            $attribute = Attribute::create(["name" => "Color Primario", "has_options" => false]);
                         }
 
                         $dataAttributeSku = [
@@ -273,10 +245,10 @@ class DatabaseSimilarProductSeeder extends Seeder
                             'featured' => false,
                         ];
 
-                        $attributeSku = \App\Models\Catalog\AttributeSku::where($dataAttributeSku)->first();
+                        $attributeSku = AttributeSku::where($dataAttributeSku)->first();
                         if(is_null($attributeSku))
                         {
-                            $attributeSku = \App\Models\Catalog\AttributeSku::create($dataAttributeSku);
+                            $attributeSku = AttributeSku::create($dataAttributeSku);
                         }
                     }
 
@@ -296,16 +268,16 @@ class DatabaseSimilarProductSeeder extends Seeder
                             'featured' => false,
                         ];
 
-                        $attributeSku = \App\Models\Catalog\AttributeSku::where($dataAttributeSku)->first();
+                        $attributeSku = AttributeSku::where($dataAttributeSku)->first();
                         if(is_null($attributeSku))
                         {
-                            $attributeSku = \App\Models\Catalog\AttributeSku::create($dataAttributeSku);
+                            $attributeSku = AttributeSku::create($dataAttributeSku);
                         }
                     }
                 }
                 catch (Exception $ex)
                 {
-                    \Symfony\Component\VarDumper\VarDumper::dump(sprintf("erro na sku %s ", $newSku->id));
+                    VarDumper::dump(sprintf("erro na sku %s ", $newSku->id));
                     $erros->push($sku);
                     continue;
                 }
@@ -323,14 +295,13 @@ class DatabaseSimilarProductSeeder extends Seeder
         echo $erros->toJson();
     }
 
-    public function parseData($sku, $key)
+    public function parseData($text, $key)
     {
-        $sku = str_replace('"",""', ',', $sku);
-        $sku = str_replace('\""', "'", $sku);
-        $sku = str_replace('\"', '"', $sku);
-        $sku = str_replace('""""', '"', $sku);
+        $sku = str_getcsv(trim($text), "\t");
 
-        $sku = str_getcsv(trim($sku), ',');
+        if(count($sku) == 20 && Str::endsWith($text, "70\n")) {
+            $sku[] = '';
+        }
 
         if(count($this->header) != count($sku)) {
             throw new Exception('There was a problema with your CSV file ate line ' . $key);

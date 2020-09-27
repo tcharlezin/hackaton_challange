@@ -1,6 +1,6 @@
 @extends('site.app')
 
-@section("titulo", "#WeArBrDevsHackathon")
+@section("titulo", "#WeBrArDevsHackathon")
 
 @section('content')
 
@@ -25,7 +25,7 @@
     <div class="container">
         <div class="block background-secondary fullwidth candidate-title">
             <div class="page-title">
-                <h2>#WeArBrDevsHackathon members</h2>
+                <h2>#WeBrArDevsHackathon members</h2>
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
                         <p>Let's talk about the project!</p>
