@@ -30,7 +30,7 @@
 
             @if(! collect($colors)->isEmpty())
                 <label>
-                    Size
+                    Color
                     <select class="input-select">
                         @foreach($colors as $cor)
                             <option value="0">{{ $cor }}</option>
