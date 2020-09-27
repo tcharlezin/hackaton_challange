@@ -24,6 +24,8 @@ Route::group(['prefix' => 'shop', "as" => "shop.", 'namespace' => 'Shop' ], func
 
     Route::get('/product/{name}', 'ProductController@index')->name("product.index");
 
+    Route::get('/product-code/{code}', 'ProductController@code')->name("product.code");
+
     Route::get('/sku/{code}', 'ProductController@bySku')->name("product.sku");
 });
 

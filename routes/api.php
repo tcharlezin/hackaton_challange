@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/recommend', '\App\Http\Controllers\Shop\ProductController@recomendationApi')->name("api.recomend");
+Route::get('/similiar/{code}', '\App\Http\Controllers\Shop\ProductController@similiar')->name("api.similiar");

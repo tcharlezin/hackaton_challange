@@ -22,6 +22,16 @@ class ProductController
         return view("shop.product.index", compact("product", "productInformation", "productsRecomened"));
     }
 
+    public function code(Request $request, $code)
+    {
+        $product = Product::where(["code" => $code])->first();
+        $productInformation = (new ProductInformation($product->id))->get();
+
+        $productsRecomened = $this->recomendation($product);
+
+        return view("shop.product.index", compact("product", "productInformation", "productsRecomened"));
+    }
+
     public function bySku(Request $request)
     {
         $product = Product::find(Sku::where('code', $request->code)->first()->product_id);
@@ -37,6 +47,12 @@ class ProductController
             Sku::where('code', $request->code)->first()->product_id
         );
 
+        return response()->json($this->recomendation($product));
+    }
+
+    public function similiar(Request $request, $code)
+    {
+        $product = Product::where('code', $request->code)->first();
         return response()->json($this->recomendation($product));
     }
 
@@ -91,11 +107,6 @@ class ProductController
         $categoryProducts = CategoryProduct::whereIn("category_id", $categoryProducts->pluck("category_id"))->get();
 
         $products = Product::whereIn("id", $categoryProducts->pluck("product_id")->unique())->get();
-
-        if($products->count() > 100)
-        {
-            return $products->random(100);
-        }
 
         return $products;
     }
