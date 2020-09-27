@@ -2,7 +2,7 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="https://github.com/matias-ecaceres" target="_blank">
-                <img src="{{ asset("site/img/team/matias.jpeg") }}" alt="Peter Ruck">
+                <img src="{{ asset("site/img/team/matias.jpeg") }}" alt="Matias C.">
             </a>
         </div>
         <div class="candidate-box-content">
@@ -17,7 +17,7 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="https://github.com/maruamallo" target="_blank">
-                <img src="{{ asset("site/img/team/maru.png") }}" alt="Peter Ruck">
+                <img src="{{ asset("site/img/team/maru.png") }}" alt="Maru A.">
             </a>
         </div>
         <div class="candidate-box-content">
@@ -32,7 +32,7 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="https://github.com/lucasschlichting" target="_blank">
-                <img src="{{ asset("site/img/team/lucas.jpeg") }}" alt="Peter Ruck">
+                <img src="{{ asset("site/img/team/lucas.jpeg") }}" alt="Lucas S.">
             </a>
         </div>
         <div class="candidate-box-content">
@@ -47,7 +47,7 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="https://github.com/tdias25" target="_blank">
-                <img src="{{ asset("site/img/team/thiago.jpeg") }}" alt="Peter Ruck">
+                <img src="{{ asset("site/img/team/thiago.jpeg") }}" alt="Thiago D.">
             </a>
         </div>
         <div class="candidate-box-content">
@@ -77,7 +77,7 @@
     <div class="candidate-box">
         <div class="candidate-box-image">
             <a href="https://github.com/tcharlezin" target="_blank">
-                <img src="{{ asset("site/img/team/nico.png") }}" alt="Peter Ruck">
+                <img src="{{ asset("site/img/team/nico.png") }}" alt="Nico P.">
             </a>
         </div>
         <div class="candidate-box-content">
