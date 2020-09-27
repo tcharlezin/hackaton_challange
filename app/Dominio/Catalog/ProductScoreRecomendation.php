@@ -18,8 +18,8 @@ class ProductScoreRecomendation
         $data["brands"] = $this->getBrands();
         $data["images"] = $this->getImages();
 
-        $data = $this->solutionWithSum($data);
-        // $data = $this->solutionWithLogImplode($data);
+        // $data = $this->solutionWithSum($data);
+        $data = $this->solutionWithLogImplode($data);
 
         return $data;
     }
